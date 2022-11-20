@@ -29,7 +29,7 @@ class Parameter {
         this.param[n - 1][2] = ConstVal.ADR;
         this.setStorage();
     }
-    getParameter() {
+    get getParameter() {
         return this.param;
     }
     //////////////////////////////////

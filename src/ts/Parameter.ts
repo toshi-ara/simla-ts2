@@ -1,6 +1,6 @@
 class Parameter {
-    param;
-    storageName: string;
+    private param;
+    private storageName: string;
 
     constructor() {
         this.param = [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
@@ -39,7 +39,7 @@ class Parameter {
         this.setStorage();
     }
 
-    getParameter() {
+    get getParameter() {
         return this.param
     }
 

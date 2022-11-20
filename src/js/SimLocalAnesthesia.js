@@ -56,7 +56,7 @@ class SimLocalAnesthesia {
     // mousedown in canvas area
     //////////////////////////////////
     clickCanvas(canvas, context, e) {
-        if (!this.time.isRunning()) {
+        if (!this.time.isRunning) {
             return;
         }
         // running
@@ -66,7 +66,7 @@ class SimLocalAnesthesia {
             return;
         }
         // when clicked in circles
-        const isResponse = this.getResponse(site, this.time.getMinute(), this.param.getParameter());
+        const isResponse = this.getResponse(site, this.time.getMinute, this.param.getParameter);
         if (isResponse) {
             // effects with response
             Draw.fillRect(context, ConstVal.CENTERS[site], ConstVal.Rrespond);
@@ -100,11 +100,11 @@ class SimLocalAnesthesia {
     setLang() {
         // start/restart/pause button
         let lab;
-        if (this.time.isRunning()) {
+        if (this.time.isRunning) {
             lab = Labels.pause;
         }
         else {
-            if (this.time.getTotalTime() == 0) {
+            if (this.time.getTotalTime == 0) {
                 lab = Labels.start;
             }
             else {
@@ -120,7 +120,7 @@ class SimLocalAnesthesia {
     }
     // push new experiment button
     clickNewExp() {
-        if (this.time.isRunning()) {
+        if (this.time.isRunning) {
             return;
         }
         // in pause
@@ -142,7 +142,7 @@ class SimLocalAnesthesia {
     }
     // push quit button
     clickQuit() {
-        if (this.time.isRunning()) {
+        if (this.time.isRunning) {
             return;
         }
         // in pause
@@ -155,7 +155,7 @@ class SimLocalAnesthesia {
         }
     }
     toggleButton() {
-        if (this.time.isRunning()) {
+        if (this.time.isRunning) {
             this.elem_newexp.style.color = "gray";
             this.elem_quit.style.color = "gray";
         }

@@ -1,9 +1,9 @@
 class Timer {
-    _isRunning: boolean;
-    _start: number;
-    _elapsed: number;
-    _total: number;
-    storageName: string;
+    private _isRunning: boolean;
+    private _start: number;
+    private _elapsed: number;
+    private _total: number;
+    private storageName: string;
 
     constructor() {
         this._isRunning = false;
@@ -22,21 +22,21 @@ class Timer {
         }
     }
 
-    isRunning(): boolean {
+    get isRunning(): boolean {
         return this._isRunning;
     }
 
-    getMinute(){
+    get getMinute(){
         return (this._total + this._elapsed) / 60000;
     };
 
-    getTotalTime(): number {
+    get getTotalTime(): number {
         return this._total;
     };
 
     getTimeStr(speed: number): string {
         let t;
-        if (this.isRunning()) {
+        if (this.isRunning) {
             this._elapsed = (Date.now() - this._start) * speed;
             t = this._total + this._elapsed;
         } else {
@@ -45,7 +45,7 @@ class Timer {
         return this.timeFormat(t);
     }
 
-    timeFormat(t: number) {
+    private timeFormat(t: number) {
         return Math.floor(t / 36e5) + new Date(t).toISOString().slice(13, 19);
     }
 
@@ -54,7 +54,7 @@ class Timer {
     //////////////////////////////////
     // push new experiment button
     clickNewExp() {
-        if (!this.isRunning()) {
+        if (!this.isRunning) {
             this._isRunning = false;
             this._start = Date.now();
             this._elapsed = 0;
@@ -65,7 +65,7 @@ class Timer {
 
     // push start/restart/pause button
     clickStart() {
-        if (!this.isRunning()) { // before start / in pause
+        if (!this.isRunning) { // before start / in pause
             this._isRunning = true;   // running
             this._start = Date.now();
             this._elapsed = 0;
@@ -79,7 +79,7 @@ class Timer {
 
     // push quit button
     clickQuit() {
-        if (!this.isRunning()) {
+        if (!this.isRunning) {
             this.clearStorage();
         }
     };
