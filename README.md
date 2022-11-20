@@ -1,1 +1,1 @@
-Please jump to [this page](https://toshi-ara.github.io/simla/)
+Please jump to [this page](https://toshi-ara.github.io/simla-ts/)
