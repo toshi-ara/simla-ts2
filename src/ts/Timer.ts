@@ -35,6 +35,10 @@ class Timer {
     };
 
     getTimeStr(speed: number): string {
+        return this.timeFormat(this.getTime(speed));
+    }
+
+    private getTime(speed: number): number {
         let t;
         if (this.isRunning) {
             this._elapsed = (Date.now() - this._start) * speed;
@@ -42,9 +46,8 @@ class Timer {
         } else {
             t = this._total;
         }
-        return this.timeFormat(t);
+        return t;
     }
-
     private timeFormat(t: number) {
         return Math.floor(t / 36e5) + new Date(t).toISOString().slice(13, 19);
     }
