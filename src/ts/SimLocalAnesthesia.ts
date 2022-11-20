@@ -19,9 +19,9 @@ class SimLocalAnesthesia {
         this.param = new Parameter();
 
         // objects for elements
-        this.elem_newexp = <HTMLInputElement>document.getElementById("newexp"),
-        this.elem_start = <HTMLInputElement>document.getElementById("start"),
-        this.elem_quit = <HTMLInputElement>document.getElementById("quit"),
+        this.elem_newexp = <HTMLInputElement>document.getElementById("newexp");
+        this.elem_start = <HTMLInputElement>document.getElementById("start");
+        this.elem_quit = <HTMLInputElement>document.getElementById("quit");
         this.elem_lang = <HTMLFormElement>document.getElementById("lang");
 
         this.elem_speed_msg = <HTMLElement>document.getElementById("speed_msg");
@@ -251,7 +251,8 @@ class SimLocalAnesthesia {
         const canvasX = Math.floor(x / scaleWidth);
         const canvasY = Math.floor(y / scaleHeight);
 
-        return [canvasX, canvasY]
+        const position: Position = [canvasX, canvasY];
+        return position
     }
 
     // Return whether position is present in circle

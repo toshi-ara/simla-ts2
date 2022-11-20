@@ -4,10 +4,10 @@ class SimLocalAnesthesia {
         this.time = new Timer();
         this.param = new Parameter();
         // objects for elements
-        this.elem_newexp = document.getElementById("newexp"),
-            this.elem_start = document.getElementById("start"),
-            this.elem_quit = document.getElementById("quit"),
-            this.elem_lang = document.getElementById("lang");
+        this.elem_newexp = document.getElementById("newexp");
+        this.elem_start = document.getElementById("start");
+        this.elem_quit = document.getElementById("quit");
+        this.elem_lang = document.getElementById("lang");
         this.elem_speed_msg = document.getElementById("speed_msg");
         this.elem_timer = document.getElementById("timer");
         this.elem_response = document.getElementById("response");
@@ -205,7 +205,8 @@ class SimLocalAnesthesia {
         // convert position in browser to that in canvas
         const canvasX = Math.floor(x / scaleWidth);
         const canvasY = Math.floor(y / scaleHeight);
-        return [canvasX, canvasY];
+        const position = [canvasX, canvasY];
+        return position;
     }
     // Return whether position is present in circle
     //
