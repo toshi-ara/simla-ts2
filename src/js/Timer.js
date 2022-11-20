@@ -15,20 +15,20 @@ class Timer {
             this._total = storage.total;
         }
     }
-    isRunning() {
+    get isRunning() {
         return this._isRunning;
     }
-    getMinute() {
+    get getMinute() {
         return (this._total + this._elapsed) / 60000;
     }
     ;
-    getTotalTime() {
+    get getTotalTime() {
         return this._total;
     }
     ;
     getTimeStr(speed) {
         let t;
-        if (this.isRunning()) {
+        if (this.isRunning) {
             this._elapsed = (Date.now() - this._start) * speed;
             t = this._total + this._elapsed;
         }
@@ -45,7 +45,7 @@ class Timer {
     //////////////////////////////////
     // push new experiment button
     clickNewExp() {
-        if (!this.isRunning()) {
+        if (!this.isRunning) {
             this._isRunning = false;
             this._start = Date.now();
             this._elapsed = 0;
@@ -56,7 +56,7 @@ class Timer {
     ;
     // push start/restart/pause button
     clickStart() {
-        if (!this.isRunning()) { // before start / in pause
+        if (!this.isRunning) { // before start / in pause
             this._isRunning = true; // running
             this._start = Date.now();
             this._elapsed = 0;
@@ -70,7 +70,7 @@ class Timer {
     ;
     // push quit button
     clickQuit() {
-        if (!this.isRunning()) {
+        if (!this.isRunning) {
             this.clearStorage();
         }
     }

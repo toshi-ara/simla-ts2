@@ -1,18 +1,18 @@
 type Position = [number, number];
 
 class SimLocalAnesthesia {
-    lang: number;
-    time: Timer;
-    param: Parameter;
-    elem_newexp: HTMLInputElement;
-    elem_start: HTMLInputElement;
-    elem_quit: HTMLInputElement;
-    elem_lang: HTMLFormElement;
-    elem_slider: HTMLSelectElement;
-    elem_canvas: HTMLCanvasElement;
-    elem_speed_msg: HTMLElement;
-    elem_timer: HTMLElement;
-    elem_response: HTMLElement;
+    private lang: number;
+    private time: Timer;
+    private param: Parameter;
+    private elem_newexp: HTMLInputElement;
+    private elem_start: HTMLInputElement;
+    private elem_quit: HTMLInputElement;
+    private elem_lang: HTMLFormElement;
+    private elem_slider: HTMLSelectElement;
+    private elem_canvas: HTMLCanvasElement;
+    private elem_speed_msg: HTMLElement;
+    private elem_timer: HTMLElement;
+    private elem_response: HTMLElement;
 
     constructor() {
         this.time = new Timer();
@@ -91,15 +91,15 @@ class SimLocalAnesthesia {
     //////////////////////////////////
     private clickCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D,
                         e: MouseEvent | TouchEvent): void {
-        if (!this.time.isRunning()) { return }
+        if (!this.time.isRunning) { return }
         // running
         const pos = this.getClickedPosition(canvas, e);
         const site = this.getCircleNumber(pos, ConstVal.CENTERS, ConstVal.Rnormal);
 
         if (site < 0) { return }
         // when clicked in circles
-        const isResponse = this.getResponse(site, this.time.getMinute(),
-                                            this.param.getParameter());
+        const isResponse = this.getResponse(site, this.time.getMinute,
+                                            this.param.getParameter);
 
         if (isResponse) {
             // effects with response
@@ -138,10 +138,10 @@ class SimLocalAnesthesia {
     private setLang(): void {
         // start/restart/pause button
         let lab;
-        if (this.time.isRunning()) {
+        if (this.time.isRunning) {
             lab = Labels.pause;
         } else {
-            if (this.time.getTotalTime() == 0) {
+            if (this.time.getTotalTime == 0) {
                 lab = Labels.start;
             } else {
                 lab = Labels.restart;
@@ -157,8 +157,8 @@ class SimLocalAnesthesia {
     }
 
     // push new experiment button
-    clickNewExp(): void {
-        if (this.time.isRunning()) { return }
+    private clickNewExp(): void {
+        if (this.time.isRunning) { return }
         // in pause
         const check = window.confirm(Labels.msg_newexp[this.lang]);
         if (check) {
@@ -171,7 +171,7 @@ class SimLocalAnesthesia {
     }
 
     // push start/restart/pause button
-    clickStart(): void {
+    private clickStart(): void {
         this.time.clickStart();
         this.setLang()
         this.toggleButton();
@@ -179,8 +179,8 @@ class SimLocalAnesthesia {
     }
 
     // push quit button
-    clickQuit(): void {
-        if (this.time.isRunning()) { return }
+    private clickQuit(): void {
+        if (this.time.isRunning) { return }
         // in pause
         const check = window.confirm(Labels.msg_quit[this.lang]);
         if (check) {
@@ -191,8 +191,8 @@ class SimLocalAnesthesia {
         }
     }
 
-    toggleButton(): void {
-        if (this.time.isRunning()) {
+    private toggleButton(): void {
+        if (this.time.isRunning) {
             this.elem_newexp.style.color = "gray";
             this.elem_quit.style.color = "gray";
         } else {
@@ -204,13 +204,13 @@ class SimLocalAnesthesia {
     //////////////////////////////////
     // change slider
     //////////////////////////////////
-    sliderChanged(): void {
+    private sliderChanged(): void {
         this.printSpeed(this.elem_slider.value)
         this.time.sliderChanged();
         this.setStorageSpeed();
     }
 
-    printSpeed(speed: string): void {
+    private printSpeed(speed: string): void {
         this.elem_speed_msg.textContent = speed + Labels.speed[this.lang];
     }
 
@@ -223,8 +223,8 @@ class SimLocalAnesthesia {
     //   canvas
     //   e
     // Return: [int:x, int:y]
-    getClickedPosition(canvas: HTMLCanvasElement,
-                       e: MouseEvent | TouchEvent): Position {
+    private getClickedPosition(canvas: HTMLCanvasElement,
+                               e: MouseEvent | TouchEvent): Position {
         let touch;
         const borderWidth = 0;
 
@@ -261,7 +261,7 @@ class SimLocalAnesthesia {
     //   center: position of center of circle
     //   radius:
     // Return: true/false
-    isInCircle(position: Position, center: number[], radius: number): boolean {
+    private isInCircle(position: Position, center: number[], radius: number): boolean {
         const l2 = Math.pow(position[0] - center[0], 2) +
                    Math.pow(position[1] - center[1], 2);
         return l2 <= Math.pow(radius, 2);
@@ -274,8 +274,8 @@ class SimLocalAnesthesia {
     //   radius
     // Return: circle number
     //   (return -1 when coordinate is out of circles)
-    getCircleNumber(position: Position,
-                    centers: number[][], radius: number): number {
+    private getCircleNumber(position: Position,
+                            centers: number[][], radius: number): number {
         let result = -1;
         for (let i = 0; i < centers.length; i++) {
             if (this.isInCircle(position, centers[i], radius)) {
@@ -291,7 +291,7 @@ class SimLocalAnesthesia {
     //   time (min)
     //   param[mu, sigma, adr]
     // Return: probability (0-1)
-    getProbability(time: number, param: number[]): number {
+    private getProbability(time: number, param: number[]): number {
         let X = 100 - (1 - param[2]) * time;
         return MyStat.phi_approx_upper((X - param[0]) / param[1])
     }
@@ -304,7 +304,7 @@ class SimLocalAnesthesia {
     //   time:  minute
     //   param[mu, sigma, adr]
     // Return: true/false
-    getResponse(num: number, time: number, param: number[][]): boolean {
+    private getResponse(num: number, time: number, param: number[][]): boolean {
         let prob;
         if (num == 0) {
             // saline
@@ -334,29 +334,29 @@ class SimLocalAnesthesia {
     // localStrage
     //////////////////////////////////
     // save data to localStorage
-    setStorageSpeed(): void {
+    private setStorageSpeed(): void {
         localStorage.setItem(ConstVal.storageNameSpeed, String(this.elem_slider.value));
     }
 
     // get data in localStorage
-    getStorageSpeed(): string {
+    private getStorageSpeed(): string {
         const speed = localStorage.getItem(ConstVal.storageNameSpeed);
         return speed ? speed : "1";
     }
 
     // save data to localStorage (lang)
-    setStorageLang(): void {
+    private setStorageLang(): void {
         localStorage.setItem(ConstVal.storageNameLang, String(this.lang))
     }
 
     // get data in localStorage (lang)
-    getStorageLang(): number {
+    private getStorageLang(): number {
         const lang = localStorage.getItem(ConstVal.storageNameLang);
         return lang ? Number(lang) : 0
     }
 
     // delete data in localStorage
-    clearStorage(): void {
+    private clearStorage(): void {
         localStorage.removeItem(ConstVal.storageNameSpeed);
         localStorage.removeItem(ConstVal.storageNameLang);
     }
