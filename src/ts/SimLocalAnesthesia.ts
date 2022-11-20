@@ -1,3 +1,4 @@
+type ClickEvent = MouseEvent | TouchEvent;
 type Position = [number, number];
 
 class SimLocalAnesthesia {
@@ -61,7 +62,7 @@ class SimLocalAnesthesia {
         this.elem_slider.addEventListener("input",
             () => {this.sliderChanged()}, false);
         this.elem_canvas.addEventListener(clickEventType,
-            (e: MouseEvent | TouchEvent) => {
+            (e: ClickEvent) => {
                 this.clickCanvas(this.elem_canvas, context, e)
             }, false);
 
@@ -90,7 +91,7 @@ class SimLocalAnesthesia {
     // mousedown in canvas area
     //////////////////////////////////
     private clickCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D,
-                        e: MouseEvent | TouchEvent): void {
+                        e: ClickEvent): void {
         if (!this.time.isRunning) { return }
         // running
         const pos = this.getClickedPosition(canvas, e);
@@ -224,12 +225,12 @@ class SimLocalAnesthesia {
     //   e
     // Return: [int:x, int:y]
     private getClickedPosition(canvas: HTMLCanvasElement,
-                               e: MouseEvent | TouchEvent): Position {
+                               e: ClickEvent): Position {
         let touch;
         const borderWidth = 0;
 
         // https://cpoint-lab.co.jp/article/202111/21267/
-        const isTouchEvent = (e: MouseEvent | TouchEvent):
+        const isTouchEvent = (e: ClickEvent):
             e is TouchEvent => e.type === 'touchstart';
 
         if (isTouchEvent(e)) {
