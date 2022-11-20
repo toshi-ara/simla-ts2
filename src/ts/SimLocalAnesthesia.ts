@@ -1,3 +1,4 @@
+type ClickEvent = MouseEvent | TouchEvent;
 type Position = [number, number];
 
 class SimLocalAnesthesia {
@@ -7,27 +8,27 @@ class SimLocalAnesthesia {
     private elem_newexp: HTMLInputElement;
     private elem_start: HTMLInputElement;
     private elem_quit: HTMLInputElement;
-    private elem_lang: HTMLFormElement;
-    private elem_slider: HTMLSelectElement;
-    private elem_canvas: HTMLCanvasElement;
     private elem_speed_msg: HTMLElement;
     private elem_timer: HTMLElement;
     private elem_response: HTMLElement;
+    private elem_lang: HTMLFormElement;
+    private elem_slider: HTMLSelectElement;
+    private elem_canvas: HTMLCanvasElement;
 
     constructor() {
         this.time = new Timer();
         this.param = new Parameter();
 
         // objects for elements
-        this.elem_newexp = <HTMLInputElement>document.getElementById("newexp"),
-        this.elem_start = <HTMLInputElement>document.getElementById("start"),
-        this.elem_quit = <HTMLInputElement>document.getElementById("quit"),
-        this.elem_lang = <HTMLFormElement>document.getElementById("lang");
+        this.elem_newexp = <HTMLInputElement>document.getElementById("newexp");
+        this.elem_start = <HTMLInputElement>document.getElementById("start");
+        this.elem_quit = <HTMLInputElement>document.getElementById("quit");
 
         this.elem_speed_msg = <HTMLElement>document.getElementById("speed_msg");
         this.elem_timer = <HTMLElement>document.getElementById("timer");
         this.elem_response = <HTMLElement>document.getElementById("response");
 
+        this.elem_lang = <HTMLFormElement>document.getElementById("lang");
         this.elem_slider = <HTMLSelectElement>document.getElementById("slider");
         this.elem_canvas = <HTMLCanvasElement>document.getElementById("canvas");
 
@@ -50,18 +51,18 @@ class SimLocalAnesthesia {
 
         // add EventListener to buttons, slider, timer and canvas
         this.elem_newexp.addEventListener(clickEventType,
-            this.clickNewExp.bind(this), false);
+            () => {this.clickNewExp()}, false);
         this.elem_start.addEventListener(clickEventType,
-            this.clickStart.bind(this), false);
+            () => {this.clickStart()}, false);
         this.elem_quit.addEventListener(clickEventType,
-            this.clickQuit.bind(this), false);
+            () => {this.clickQuit()}, false);
 
         this.elem_lang.addEventListener("change",
-            this.toggleLang.bind(this), false);
+            () => {this.toggleLang()}, false);
         this.elem_slider.addEventListener("input",
-            this.sliderChanged.bind(this), false);
+            () => {this.sliderChanged()}, false);
         this.elem_canvas.addEventListener(clickEventType,
-            (e: MouseEvent | TouchEvent) => {
+            (e: ClickEvent) => {
                 this.clickCanvas(this.elem_canvas, context, e)
             }, false);
 
@@ -90,7 +91,7 @@ class SimLocalAnesthesia {
     // mousedown in canvas area
     //////////////////////////////////
     private clickCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D,
-                        e: MouseEvent | TouchEvent): void {
+                        e: ClickEvent): void {
         if (!this.time.isRunning) { return }
         // running
         const pos = this.getClickedPosition(canvas, e);
@@ -224,12 +225,12 @@ class SimLocalAnesthesia {
     //   e
     // Return: [int:x, int:y]
     private getClickedPosition(canvas: HTMLCanvasElement,
-                               e: MouseEvent | TouchEvent): Position {
+                               e: ClickEvent): Position {
         let touch;
         const borderWidth = 0;
 
         // https://cpoint-lab.co.jp/article/202111/21267/
-        const isTouchEvent = (e: MouseEvent | TouchEvent):
+        const isTouchEvent = (e: ClickEvent):
             e is TouchEvent => e.type === 'touchstart';
 
         if (isTouchEvent(e)) {
@@ -251,7 +252,8 @@ class SimLocalAnesthesia {
         const canvasX = Math.floor(x / scaleWidth);
         const canvasY = Math.floor(y / scaleHeight);
 
-        return [canvasX, canvasY]
+        const position: Position = [canvasX, canvasY];
+        return position
     }
 
     // Return whether position is present in circle
@@ -327,7 +329,7 @@ class SimLocalAnesthesia {
     // display timer
     displayTimer(): void {
         this.elem_timer.textContent = this.time.getTimeStr(Number(this.elem_slider.value));
-        requestAnimationFrame(this.displayTimer.bind(this));
+        requestAnimationFrame(() => {this.displayTimer()});
     }
 
     //////////////////////////////////

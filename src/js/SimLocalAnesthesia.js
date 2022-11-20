@@ -4,13 +4,13 @@ class SimLocalAnesthesia {
         this.time = new Timer();
         this.param = new Parameter();
         // objects for elements
-        this.elem_newexp = document.getElementById("newexp"),
-            this.elem_start = document.getElementById("start"),
-            this.elem_quit = document.getElementById("quit"),
-            this.elem_lang = document.getElementById("lang");
+        this.elem_newexp = document.getElementById("newexp");
+        this.elem_start = document.getElementById("start");
+        this.elem_quit = document.getElementById("quit");
         this.elem_speed_msg = document.getElementById("speed_msg");
         this.elem_timer = document.getElementById("timer");
         this.elem_response = document.getElementById("response");
+        this.elem_lang = document.getElementById("lang");
         this.elem_slider = document.getElementById("slider");
         this.elem_canvas = document.getElementById("canvas");
         // set canvas
@@ -28,11 +28,11 @@ class SimLocalAnesthesia {
         // PC or tablet
         const clickEventType = (window.ontouchstart === undefined) ? "mousedown" : "touchstart";
         // add EventListener to buttons, slider, timer and canvas
-        this.elem_newexp.addEventListener(clickEventType, this.clickNewExp.bind(this), false);
-        this.elem_start.addEventListener(clickEventType, this.clickStart.bind(this), false);
-        this.elem_quit.addEventListener(clickEventType, this.clickQuit.bind(this), false);
-        this.elem_lang.addEventListener("change", this.toggleLang.bind(this), false);
-        this.elem_slider.addEventListener("input", this.sliderChanged.bind(this), false);
+        this.elem_newexp.addEventListener(clickEventType, () => { this.clickNewExp(); }, false);
+        this.elem_start.addEventListener(clickEventType, () => { this.clickStart(); }, false);
+        this.elem_quit.addEventListener(clickEventType, () => { this.clickQuit(); }, false);
+        this.elem_lang.addEventListener("change", () => { this.toggleLang(); }, false);
+        this.elem_slider.addEventListener("input", () => { this.sliderChanged(); }, false);
         this.elem_canvas.addEventListener(clickEventType, (e) => {
             this.clickCanvas(this.elem_canvas, context, e);
         }, false);
@@ -205,7 +205,8 @@ class SimLocalAnesthesia {
         // convert position in browser to that in canvas
         const canvasX = Math.floor(x / scaleWidth);
         const canvasY = Math.floor(y / scaleHeight);
-        return [canvasX, canvasY];
+        const position = [canvasX, canvasY];
+        return position;
     }
     // Return whether position is present in circle
     //
@@ -276,7 +277,7 @@ class SimLocalAnesthesia {
     // display timer
     displayTimer() {
         this.elem_timer.textContent = this.time.getTimeStr(Number(this.elem_slider.value));
-        requestAnimationFrame(this.displayTimer.bind(this));
+        requestAnimationFrame(() => { this.displayTimer(); });
     }
     //////////////////////////////////
     // localStrage
