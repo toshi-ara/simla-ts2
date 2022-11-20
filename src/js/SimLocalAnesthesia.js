@@ -28,11 +28,11 @@ class SimLocalAnesthesia {
         // PC or tablet
         const clickEventType = (window.ontouchstart === undefined) ? "mousedown" : "touchstart";
         // add EventListener to buttons, slider, timer and canvas
-        this.elem_newexp.addEventListener(clickEventType, this.clickNewExp.bind(this), false);
-        this.elem_start.addEventListener(clickEventType, this.clickStart.bind(this), false);
-        this.elem_quit.addEventListener(clickEventType, this.clickQuit.bind(this), false);
-        this.elem_lang.addEventListener("change", this.toggleLang.bind(this), false);
-        this.elem_slider.addEventListener("input", this.sliderChanged.bind(this), false);
+        this.elem_newexp.addEventListener(clickEventType, () => { this.clickNewExp(); }, false);
+        this.elem_start.addEventListener(clickEventType, () => { this.clickStart(); }, false);
+        this.elem_quit.addEventListener(clickEventType, () => { this.clickQuit(); }, false);
+        this.elem_lang.addEventListener("change", () => { this.toggleLang(); }, false);
+        this.elem_slider.addEventListener("input", () => { this.sliderChanged(); }, false);
         this.elem_canvas.addEventListener(clickEventType, (e) => {
             this.clickCanvas(this.elem_canvas, context, e);
         }, false);
@@ -276,7 +276,7 @@ class SimLocalAnesthesia {
     // display timer
     displayTimer() {
         this.elem_timer.textContent = this.time.getTimeStr(Number(this.elem_slider.value));
-        requestAnimationFrame(this.displayTimer.bind(this));
+        requestAnimationFrame(() => { this.displayTimer(); });
     }
     //////////////////////////////////
     // localStrage

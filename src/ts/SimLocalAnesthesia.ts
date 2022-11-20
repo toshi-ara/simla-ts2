@@ -50,16 +50,16 @@ class SimLocalAnesthesia {
 
         // add EventListener to buttons, slider, timer and canvas
         this.elem_newexp.addEventListener(clickEventType,
-            this.clickNewExp.bind(this), false);
+            () => {this.clickNewExp()}, false);
         this.elem_start.addEventListener(clickEventType,
-            this.clickStart.bind(this), false);
+            () => {this.clickStart()}, false);
         this.elem_quit.addEventListener(clickEventType,
-            this.clickQuit.bind(this), false);
+            () => {this.clickQuit()}, false);
 
         this.elem_lang.addEventListener("change",
-            this.toggleLang.bind(this), false);
+            () => {this.toggleLang()}, false);
         this.elem_slider.addEventListener("input",
-            this.sliderChanged.bind(this), false);
+            () => {this.sliderChanged()}, false);
         this.elem_canvas.addEventListener(clickEventType,
             (e: MouseEvent | TouchEvent) => {
                 this.clickCanvas(this.elem_canvas, context, e)
@@ -327,7 +327,7 @@ class SimLocalAnesthesia {
     // display timer
     displayTimer(): void {
         this.elem_timer.textContent = this.time.getTimeStr(Number(this.elem_slider.value));
-        requestAnimationFrame(this.displayTimer.bind(this));
+        requestAnimationFrame(() => {this.displayTimer()});
     }
 
     //////////////////////////////////
