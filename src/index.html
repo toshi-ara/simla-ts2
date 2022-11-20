@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>局所麻酔薬シミュレーター</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/ConstVal.js"></script>
+    <script src="js/Labels.js"></script>
+    <script src="js/MyStat.js"></script>
+    <script src="js/Draw.js"></script>
+    <script src="js/Timer.js"></script>
+    <script src="js/Parameter.js"></script>
+    <script src="js/SimLocalAnesthesia.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    <form id="lang">
+        <input type="radio" name="la" value=0> 日本語 (Japanese)
+        <input type="radio" name="la" value=1> English
+    </form>
+
+    <div id="buttons">
+        <button id="newexp"></button>
+        <button id="start"></button>
+        <button id="quit"></button>
+    </div>
+
+    <div>
+        <input id="slider" type="range" min="1" max="10" value="1">
+        <div id="speed_msg"></div>
+    </div>
+    <div id="timer"></div>
+
+    <div>
+        <canvas id="canvas"  width="481" height="268"></canvas>
+    </div>
+    <div id="response"></div>
+</body>
+
