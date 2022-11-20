@@ -8,12 +8,12 @@ class SimLocalAnesthesia {
     private elem_newexp: HTMLInputElement;
     private elem_start: HTMLInputElement;
     private elem_quit: HTMLInputElement;
-    private elem_lang: HTMLFormElement;
-    private elem_slider: HTMLSelectElement;
-    private elem_canvas: HTMLCanvasElement;
     private elem_speed_msg: HTMLElement;
     private elem_timer: HTMLElement;
     private elem_response: HTMLElement;
+    private elem_lang: HTMLFormElement;
+    private elem_slider: HTMLSelectElement;
+    private elem_canvas: HTMLCanvasElement;
 
     constructor() {
         this.time = new Timer();
@@ -23,12 +23,12 @@ class SimLocalAnesthesia {
         this.elem_newexp = <HTMLInputElement>document.getElementById("newexp");
         this.elem_start = <HTMLInputElement>document.getElementById("start");
         this.elem_quit = <HTMLInputElement>document.getElementById("quit");
-        this.elem_lang = <HTMLFormElement>document.getElementById("lang");
 
         this.elem_speed_msg = <HTMLElement>document.getElementById("speed_msg");
         this.elem_timer = <HTMLElement>document.getElementById("timer");
         this.elem_response = <HTMLElement>document.getElementById("response");
 
+        this.elem_lang = <HTMLFormElement>document.getElementById("lang");
         this.elem_slider = <HTMLSelectElement>document.getElementById("slider");
         this.elem_canvas = <HTMLCanvasElement>document.getElementById("canvas");
 

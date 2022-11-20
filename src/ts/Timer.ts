@@ -86,7 +86,7 @@ class Timer {
 
     // change slider
     sliderChanged() {
-        if (this._isRunning) {
+        if (this.isRunning) {
             this._total += this._elapsed;
             this._start = Date.now();
             this._elapsed = 0;

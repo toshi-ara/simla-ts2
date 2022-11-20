@@ -7,10 +7,10 @@ class SimLocalAnesthesia {
         this.elem_newexp = document.getElementById("newexp");
         this.elem_start = document.getElementById("start");
         this.elem_quit = document.getElementById("quit");
-        this.elem_lang = document.getElementById("lang");
         this.elem_speed_msg = document.getElementById("speed_msg");
         this.elem_timer = document.getElementById("timer");
         this.elem_response = document.getElementById("response");
+        this.elem_lang = document.getElementById("lang");
         this.elem_slider = document.getElementById("slider");
         this.elem_canvas = document.getElementById("canvas");
         // set canvas
