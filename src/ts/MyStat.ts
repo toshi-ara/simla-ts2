@@ -2,7 +2,7 @@
 // statistical functions
 //////////////////////////////////
 
-class MyStat {
+export default class MyStat {
     // logistic function
     static inv_logit(x :number): number {
         return 1 / (1 + Math.exp(-x))

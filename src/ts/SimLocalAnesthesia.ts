@@ -1,7 +1,14 @@
+import ConstVal from "./ConstVal";
+import Labels from "./Labels";
+import Parameter from "./Parameter";
+import Draw from "./Draw";
+import Timer from "./Timer";
+import MyStat from "./MyStat";
+
 type ClickEvent = MouseEvent | TouchEvent;
 type Position = [number, number];
 
-class SimLocalAnesthesia {
+export default class SimLocalAnesthesia {
     private lang: number;
     private time: Timer;
     private param: Parameter;

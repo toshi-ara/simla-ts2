@@ -1,4 +1,7 @@
-class Parameter {
+import ConstVal from "./ConstVal";
+import MyStat from "./MyStat";
+
+export default class Parameter {
     private param;
     private storageName: string;
 
