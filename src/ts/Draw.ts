@@ -1,8 +1,10 @@
+import ConstVal from "./ConstVal";
+
 //////////////////////////////////
 // function for drawing
 //////////////////////////////////
 
-class Draw {
+export default class Draw {
     // Draw circle
     static drawCircle(context: CanvasRenderingContext2D,
                       center: number[], radiusOuter: number, radiusInner: number,

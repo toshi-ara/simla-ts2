@@ -1,4 +1,4 @@
-class Timer {
+export default class Timer {
     private _isRunning: boolean;
     private _start: number;
     private _elapsed: number;
