@@ -180,6 +180,7 @@ export default class SimLocalAnesthesia {
 
     // push start/restart/pause button
     private clickStart(): void {
+        this.param = new Parameter();
         this.time.clickStart();
         this.setLang()
         this.toggleButton();
@@ -193,6 +194,7 @@ export default class SimLocalAnesthesia {
         const check = window.confirm(Labels.msg_quit[this.lang]);
         if (check) {
             window.alert(Labels.msg_close[this.lang]);
+            this.elem_start.textContent = Labels.start[this.lang];
             this.time.clickQuit();
             this.param.clearStorage();
             this.clearStorage();
