@@ -1,5 +1,5 @@
 import SimLocalAnesthesia from "./SimLocalAnesthesia";
-require("../css/style.css");
+import "../css/style.css";
 
 window.onload = () => {
     const sim = new SimLocalAnesthesia();
