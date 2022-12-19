@@ -41,12 +41,17 @@ export default class SimLocalAnesthesia {
 
         // set canvas
         const context = this.elem_canvas.getContext("2d")!;
-
-        // draw circles
-        ConstVal.CENTERS.forEach(function(center) {
-            Draw.drawCircle(context, center,
-                            ConstVal.Rnormal, ConstVal.RnormalCenter, "black")
-        });
+        const img = new Image();
+        img.src = "fig/fig_back.svg";
+        img.onload = () => {
+            // display image
+            context.drawImage(img, 0, 0, 481, 268);
+            // draw circles
+            ConstVal.CENTERS.forEach(function(center) {
+                Draw.drawCircle(context, center,
+                                ConstVal.Rnormal, ConstVal.RnormalCenter, "black")
+            });
+        };
 
         // PC or tablet
         const clickEventType = (window.ontouchstart === undefined) ? "mousedown" : "touchstart";
