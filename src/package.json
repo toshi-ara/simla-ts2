@@ -6,7 +6,7 @@
     "scripts": {
         "tsc": "tsc",
         "build": "webpack",
-        "start": "webpack serve --mode=development"
+        "start": "webpack-dev-server"
     },
     "author": "ARA Toshiaki",
     "license": "MIT license",

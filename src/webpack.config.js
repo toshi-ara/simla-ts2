@@ -8,13 +8,16 @@ module.exports = {
 
     output: {
         path: path.join(__dirname, "dist"),
-        filename: "main.js"
+        filename: "main.js",
+        publicPath: "/dist/"
     },
 
     devServer: {
         static: {
-            directory: path.join(__dirname, '/')
-        }
+            directory: path.join(__dirname, '/'),
+            watch: true,
+        },
+        // hot: "only",
     },
 
     module: {
