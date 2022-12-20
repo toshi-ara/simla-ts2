@@ -18,8 +18,11 @@ html {
     padding: 20px;
 }
 #canvas {
-    width: auto;
-    height: auto;
+    background-image: url(../fig/fig_back.svg);
+    background-repeat: no-repeat;
+    background-size:contain;
+    width: 481px;
+    height: 268px;
 }
 #response {
     font-size: 48px;

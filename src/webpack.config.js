@@ -25,7 +25,19 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: true,
+                            sourceMap: true
+                        }
+                    }],
+            },
+            {
+                test: /\.(png|jpg|gif|svg)/,
+                type: "asset/inline",
             }
         ]
     },
