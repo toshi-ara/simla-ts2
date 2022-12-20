@@ -1,6 +1,8 @@
-const CACHE_NAME = 'simla-caches';
+const CACHE_NAME = 'simla-ts-caches';
 const urlsToCache = [
-    'index.html'
+    'index.html',
+    './dist/main.js',
+    './fig/fig_back.svg'
 ];
 
 self.addEventListener('install', event => {
