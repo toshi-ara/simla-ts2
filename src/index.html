@@ -1,33 +1,47 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="utf-8">
     <title>局所麻酔薬シミュレーター</title>
     <link rel="manifest" href="manifest.json">
     <script src="dist/main.js"></script>
 </head>
+
 <body>
-    <form id="lang">
-        <input type="radio" name="la" value=0> 日本語 (Japanese)
-        <input type="radio" name="la" value=1> English
-    </form>
-
-    <div id="buttons">
-        <button id="newexp"></button>
-        <button id="start"></button>
-        <button id="quit"></button>
+    <div class="forPortrait">
+        画面を横向きにして下さい <BR>
+        <BR>
+        Please change screen to landscape (horizontal)
     </div>
 
-    <div>
-        <input id="slider" type="range" min="1" max="10" value="1">
-        <div id="speed_msg"></div>
-    </div>
-    <div id="timer"></div>
+    <div class="forLandscape">
+        <div id="left">
+            <form id="lang">
+                <input type="radio" name="la" value=0> 日本語 (Japanese)
+                <input type="radio" name="la" value=1> English
+            </form>
 
-    <div>
-        <canvas id="canvas"  width="481" height="268"></canvas>
+            <div id="buttons">
+                <label><button id="newexp"></button></label>
+                <label><button id="start"></button></label>
+                <label><button id="quit"></button></label>
+            </div>
+
+            <div id="timer"></div>
+
+            <div>
+                <input id="slider" type="range" min="1" max="10" value="1">
+                <div id="speed_msg"></div>
+            </div>
+        </div>
+
+        <div id="right">
+            <div><canvas id="canvas" width="481" height="268"></canvas></div>
+            <div id="response"></div>
+        </div>
     </div>
-    <div id="response"></div>
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('service_worker.js').then(function(registration) {
