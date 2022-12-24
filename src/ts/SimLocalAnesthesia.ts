@@ -201,9 +201,11 @@ export default class SimLocalAnesthesia {
 
     private toggleButton(): void {
         if (this.time.isRunning) {
+            this.elem_start.style.background = "springgreen";
             this.elem_newexp.style.color = "gray";
             this.elem_quit.style.color = "gray";
         } else {
+            this.elem_start.style.background = "cyan";
             this.elem_newexp.style.color = "black";
             this.elem_quit.style.color = "black";
         }
