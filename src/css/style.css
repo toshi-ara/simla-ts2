@@ -1,16 +1,20 @@
 @media screen and (orientation: landscape){
-    div.forPortrait { display: none; }
+    div.forPortrait {
+        display: none;
+    }
     div.forLandscape {
         display: flex;
     }
 }
 
 @media screen and (orientation: portrait){
-    div.forLandscape { display: none; }
+    div.forLandscape {
+        display: none;
+    }
     div.forPortrait {
         font-size: 60px;
         color: #00008B;
-        margin: 200px 10px;
+        margin: 200px 20px;
     }
 }
 
@@ -30,6 +34,7 @@ html {
 #lang {
     font-size: 21px;
     padding: 5px;
+    margin-top: 10px;
 }
 #lang > label {
     display: block;
@@ -46,10 +51,11 @@ html {
 #timer {
     font-family: monospace;
     font-size: 60px;
-    margin: 20px;
+    margin: 10px;
 }
 
 #slider {
+    margin-top: 10px;
     width: 300px;
 }
 
