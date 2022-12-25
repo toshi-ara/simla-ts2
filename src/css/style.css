@@ -74,6 +74,11 @@ html {
     font-size: 48px;
 }
 
+#version {
+    margin-top: 10px;
+    color: gray;
+}
+
 
 button {
     width: 250px;
