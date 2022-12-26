@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v0.8.2.9000';
+const CACHE_NAME = 'cache-simla-v0.8.2.9001';
 const urlsToCache = [
     'index.html',
     './dist/main.js'
