@@ -1,7 +1,7 @@
 // https://github.com/kanatapple/service-worker
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v3';
+const CACHE_NAME = 'cache-simla-v0.8.2';
 const urlsToCache = [
     'index.html',
     './dist/main.js'
