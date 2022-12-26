@@ -1,13 +1,12 @@
-// https://github.com/kanatapple/service-worker
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v0.8.2';
+const CACHE_NAME = 'cache-simla-v0.8.2.9000';
 const urlsToCache = [
     'index.html',
     './dist/main.js'
 ];
 
-self.addEventListener('install', event => {
+self.addEventListener('install', (event) => {
     self.skipWaiting()
     event.waitUntil(
         caches
@@ -35,7 +34,7 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-self.addEventListener('fetch', event =>  {
+self.addEventListener('fetch', (event) =>  {
     event.respondWith(
         caches
         .match(event.request)
