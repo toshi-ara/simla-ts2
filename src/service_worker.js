@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v0.8.2.9001';
+const CACHE_NAME = 'cache-simla-v0.8.2.9002';
 const urlsToCache = [
     'index.html',
     './dist/main.js'
@@ -41,7 +41,7 @@ self.addEventListener('fetch', (event) =>  {
         .then((response) => {
             if (response) { return response; }
 
-            let fetchRequest = event.request.clone();
+            const fetchRequest = event.request.clone();
             return fetch(fetchRequest)
                 .then((response) => {
                     if (!response || response.status !== 200 || response.type !== 'basic') {
@@ -53,7 +53,6 @@ self.addEventListener('fetch', (event) =>  {
                         .then((cache) => {
                             cache.put(event.request, responseToCache);
                         });
-
                     return response;
                 });
         })
