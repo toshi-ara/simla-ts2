@@ -11,7 +11,7 @@
 
 <body>
     <div id="version">
-        Simulator of Local Anesthesia version 0.8.2.9002
+        Simulator of Local Anesthesia version 0.8.2.9003
     </div>
 
     <div class="forPortrait">
@@ -47,6 +47,8 @@
     </div>
 
     <script>
+        const str = "更新があります\nアプリケーションを再起動して下さい\n\nExist update\nPlease restart application"
+
         if ("serviceWorker" in navigator) {
             navigator.serviceWorker
                 .register("service_worker.js")
@@ -55,6 +57,7 @@
                     registration.onupdatefound = () => {
                         console.log("Exist update");
                         registration.update();
+                        window.alert(str);
                     };
                 })
                 .catch(err => {
