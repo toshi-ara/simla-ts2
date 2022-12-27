@@ -11,7 +11,7 @@
 
 <body>
     <div id="version">
-        Simulator of Local Anesthesia version 0.8.2
+        Simulator of Local Anesthesia version 0.8.3
     </div>
 
     <div class="forPortrait">
@@ -47,18 +47,31 @@
     </div>
 
     <script>
+        const str = "更新があります\nアプリケーションを再起動して下さい\n\nExist update\nPlease restart application"
+
         if ("serviceWorker" in navigator) {
-            navigator.serviceWorker
-                .register("service_worker.js")
-                .then(registration => {
-                    console.log("ServiceWorker registred");
-                    registration.onupdatefound = function() {
-                        console.log("Exist update");
-                        registration.update();
-                    };
-                })
-                .catch(err => {
-                    console.log("ServiceWorker error");
+            navigator.serviceWorker.getRegistration()
+                .then ((registration) => {
+                    // First registration when no serviceworker
+                    const firstRegistration = (registration === undefined);
+
+                    // Registration of serviceWorker
+                    navigator.serviceWorker.register("service_worker.js")
+                        .then(registration => {
+                            // found update?
+                            if (!firstRegistration) {
+                                registration.addEventListener("updatefound", () => {
+                                    const installingWorker = registration.installing;
+                                    if (installingWorker != null) {
+                                        installingWorker.onstatechange = e => {
+                                            if (e.target.state == "installed") {
+                                                alert(str);
+                                            }
+                                        };
+                                    }
+                                });
+                            }
+                        });
                 });
         }
     </script>
