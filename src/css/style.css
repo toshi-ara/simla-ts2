@@ -62,7 +62,7 @@ html {
 }
 
 #canvas {
-    background-image: url(../fig/fig_back.svg);
+    background-image: url(../images/fig_back.svg);
     background-repeat: no-repeat;
     background-size:contain;
     width: 481px;
