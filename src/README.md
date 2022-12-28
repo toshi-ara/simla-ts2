@@ -12,6 +12,15 @@ npm install
 npm run build
 ```
 
+### command for build
+``` bash
+# for build
+npm run build
+
+# for development with webpack-dev-server
+npm run start
+```
+
 ### memo for this program
 ``` bash
 cd (path to this repository)
