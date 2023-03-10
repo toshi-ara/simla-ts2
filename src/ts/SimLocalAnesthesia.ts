@@ -305,7 +305,7 @@ export default class SimLocalAnesthesia {
     // Return: probability (0-1)
     private getProbability(time: number, param: number[]): number {
         let X = 100 - (1 - param[2]) * time;
-        return MyStat.phi_approx_upper((X - param[0]) / param[1])
+        return MyStat.phi((X - param[0]) / param[1], true)
     }
 
     // Return "respond / not respond" with random number
