@@ -10,7 +10,7 @@ type Position = [number, number];
 
 export default class SimLocalAnesthesia {
     private lang: number;
-    private time: Timer;
+    private timer: Timer;
     private param: Parameter;
     private elem_newexp: HTMLInputElement;
     private elem_start: HTMLInputElement;
@@ -23,7 +23,7 @@ export default class SimLocalAnesthesia {
     private elem_canvas: HTMLCanvasElement;
 
     constructor() {
-        this.time = new Timer();
+        this.timer = new Timer();
         this.param = new Parameter();
 
         // objects for elements
@@ -95,16 +95,17 @@ export default class SimLocalAnesthesia {
     //////////////////////////////////
     // mousedown in canvas area
     //////////////////////////////////
-    private clickCanvas(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D,
+    private clickCanvas(canvas: HTMLCanvasElement,
+                        context: CanvasRenderingContext2D,
                         e: ClickEvent): void {
-        if (!this.time.isRunning) { return }
+        if (!this.timer.isRunning) { return }
         // running
         const pos = this.getClickedPosition(canvas, e);
         const site = this.getCircleNumber(pos, ConstVal.CENTERS, ConstVal.Rnormal);
 
         if (site < 0) { return }
         // when clicked in circles
-        const isResponse = this.getResponse(site, this.time.getMinute,
+        const isResponse = this.getResponse(site, this.timer.getMinute,
                                             this.param.getParameter);
 
         if (isResponse) {
@@ -144,10 +145,10 @@ export default class SimLocalAnesthesia {
     private setLang(): void {
         // start/restart/pause button
         let lab;
-        if (this.time.isRunning) {
+        if (this.timer.isRunning) {
             lab = Labels.pause;
         } else {
-            if (this.time.getTotalTime == 0) {
+            if (this.timer.getTotalTime == 0) {
                 lab = Labels.start;
             } else {
                 lab = Labels.restart;
@@ -164,11 +165,11 @@ export default class SimLocalAnesthesia {
 
     // push new experiment button
     private clickNewExp(): void {
-        if (this.time.isRunning) { return }
+        if (this.timer.isRunning) { return }
         // in pause
         const check = window.confirm(Labels.msg_newexp[this.lang]);
         if (check) {
-            this.time.clickNewExp();
+            this.timer.clickNewExp();
             this.param.setInitParameter();
             this.elem_slider.value = "1";
             this.setStorageSpeed();
@@ -179,7 +180,7 @@ export default class SimLocalAnesthesia {
     // push start/restart/pause button
     private clickStart(): void {
         this.param = new Parameter();
-        this.time.clickStart();
+        this.timer.clickStart();
         this.setLang()
         this.toggleButton();
         this.setStorageSpeed();
@@ -187,20 +188,20 @@ export default class SimLocalAnesthesia {
 
     // push quit button
     private clickQuit(): void {
-        if (this.time.isRunning) { return }
+        if (this.timer.isRunning) { return }
         // in pause
         const check = window.confirm(Labels.msg_quit[this.lang]);
         if (check) {
             window.alert(Labels.msg_close[this.lang]);
             this.elem_start.textContent = Labels.start[this.lang];
-            this.time.clickQuit();
+            this.timer.clickQuit();
             this.param.clearStorage();
             this.clearStorage();
         }
     }
 
     private toggleButton(): void {
-        if (this.time.isRunning) {
+        if (this.timer.isRunning) {
             this.elem_start.style.background = "springgreen";
             this.elem_newexp.style.color = "gray";
             this.elem_quit.style.color = "gray";
@@ -216,7 +217,7 @@ export default class SimLocalAnesthesia {
     //////////////////////////////////
     private sliderChanged(): void {
         this.printSpeed(this.elem_slider.value)
-        this.time.sliderChanged();
+        this.timer.sliderChanged();
         this.setStorageSpeed();
     }
 
@@ -304,7 +305,7 @@ export default class SimLocalAnesthesia {
     // Return: probability (0-1)
     private getProbability(time: number, param: number[]): number {
         let X = 100 - (1 - param[2]) * time;
-        return MyStat.phi_approx_upper((X - param[0]) / param[1])
+        return MyStat.phi((X - param[0]) / param[1], true)
     }
 
     // Return "respond / not respond" with random number
@@ -337,7 +338,7 @@ export default class SimLocalAnesthesia {
     //////////////////////////////////
     // display timer
     displayTimer(): void {
-        this.elem_timer.textContent = this.time.getTimeStr(Number(this.elem_slider.value));
+        this.elem_timer.textContent = this.timer.getTimeStr(Number(this.elem_slider.value));
         requestAnimationFrame(() => {this.displayTimer()});
     }
 

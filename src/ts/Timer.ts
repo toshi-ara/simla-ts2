@@ -48,6 +48,7 @@ export default class Timer {
         }
         return t;
     }
+
     private timeFormat(t: number) {
         return Math.floor(t / 36e5) + new Date(t).toISOString().slice(13, 19);
     }
@@ -72,8 +73,7 @@ export default class Timer {
             this._isRunning = true;   // running
             this._start = Date.now();
             this._elapsed = 0;
-        }
-        else { // in running
+        } else { // in running
             this._isRunning = false;  // pause
             this._total += this._elapsed;
         }
