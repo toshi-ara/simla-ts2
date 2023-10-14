@@ -1,9 +1,9 @@
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v0.8.5';
+const CACHE_NAME = 'cache-simla-v0.8.6';
 const urlsToCache = [
-    'index.html',
-    './dist/main.js'
+    'sim_local_anesthetics.html',
+    './dist/sim_local_anesthetics.js'
 ];
 
 self.addEventListener('install', (event) => {
