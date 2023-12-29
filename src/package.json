@@ -1,6 +1,6 @@
 {
-    "name": "simla-ta",
-    "version": "0.8.6",
+    "name": "simla-ts",
+    "version": "1.0.0",
     "description": "",
     "main": "webpack.config.js",
     "scripts": {

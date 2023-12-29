@@ -1,6 +1,6 @@
 import * as ConstVal from "./ConstVal";
 import { randMultiNorm } from "./RandMultiNorm";
-import MyStat from "./MyStat";
+import { random_norm } from "./MyStat";
 
 export default class Parameter {
     private param;
@@ -22,7 +22,7 @@ export default class Parameter {
     setInitParameter() {
         // individual difference
         const d = ConstVal.MU0_adj +
-                  MyStat.random_norm(ConstVal.D_MU0[0], ConstVal.D_MU0[1]);
+                  random_norm(ConstVal.D_MU0[0], ConstVal.D_MU0[1]);
 
         // values of saline are 0
         // set parameters for Pro, Lid, Mep, Bup
