@@ -17,9 +17,7 @@
     1. パラメーター値を調整したい、あるいはレイアウトを変更したい場合
 
 ## インストールおよび実行方法について
-1. [このページ](https://toshi-ara.github.io/simla-ts/) にアクセスする
-1. [シミュレーターのページへ](https://toshi-ara.github.io/simla-ts/src/index.html)
-   のリンクを開く
+1. [このページ](https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html)にアクセスする
 1. Windows PC（EdgeあるいがChromeで開く）およびAndroidの場合には
   インストールするように通知が表示される
     - インストールした場合にはインターネットに接続していない状態でも
