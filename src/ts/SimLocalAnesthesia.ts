@@ -1,4 +1,4 @@
-import ConstVal from "./ConstVal";
+import * as ConstVal from "./ConstVal";
 import Labels from "./Labels";
 import Parameter from "./Parameter";
 import Draw from "./Draw";
