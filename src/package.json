@@ -1,21 +1,20 @@
 {
-    "name": "simla-ta",
-    "version": "0.8.6",
+    "name": "simla-ts",
+    "version": "1.0.0",
     "description": "",
     "main": "webpack.config.js",
     "scripts": {
         "tsc": "tsc",
-        "build": "webpack",
-        "start": "webpack-dev-server"
+        "build": "webpack"
     },
     "author": "ARA Toshiaki",
     "license": "MIT license",
     "devDependencies": {
-        "css-loader": "^6.7.2",
-        "style-loader": "^3.3.1",
-        "ts-loader": "^9.4.1",
-        "webpack": "^5.75.0",
-        "webpack-cli": "^5.0.0",
-        "webpack-dev-server": "^4.11.1"
+        "css-loader": "^6.8.1",
+        "npm-check-updates": "^16.14.12",
+        "style-loader": "^3.3.3",
+        "ts-loader": "^9.5.1",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
     }
 }

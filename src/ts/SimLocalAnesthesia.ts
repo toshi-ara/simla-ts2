@@ -1,9 +1,9 @@
-import ConstVal from "./ConstVal";
+import * as ConstVal from "./ConstVal";
 import Labels from "./Labels";
 import Parameter from "./Parameter";
 import Draw from "./Draw";
 import Timer from "./Timer";
-import MyStat from "./MyStat";
+import { phi } from "./MyStat";
 
 type ClickEvent = MouseEvent | TouchEvent;
 type Position = [number, number];
@@ -305,7 +305,7 @@ export default class SimLocalAnesthesia {
     // Return: probability (0-1)
     private getProbability(time: number, param: number[]): number {
         let X = 100 - (1 - param[2]) * time;
-        return MyStat.phi((X - param[0]) / param[1], true)
+        return phi((X - param[0]) / param[1], true)
     }
 
     // Return "respond / not respond" with random number

@@ -1,10 +1,10 @@
-const path = require('path');
+const path = require("path");
 
 module.exports = {
-    mode: 'production', // "production" | "development" | "none"
+    mode: "production", // "production" | "development" | "none"
 
     // entrypoint
-    entry: './ts/main.ts',
+    entry: path.join(__dirname, "./ts/main.ts"),
 
     output: {
         path: path.join(__dirname, "dist"),
@@ -14,7 +14,7 @@ module.exports = {
 
     devServer: {
         static: {
-            directory: path.join(__dirname, '/'),
+            directory: path.join(__dirname, "/"),
             watch: true,
         },
         // hot: "only",
@@ -24,14 +24,14 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: 'ts-loader'
+                use: "ts-loader"
             },
             {
                 test: /\.css$/,
                 use: [
-                    'style-loader',
+                    "style-loader",
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
                             url: true,
                             sourceMap: true
@@ -50,7 +50,7 @@ module.exports = {
             "node_modules",
         ],
         extensions: [
-            '.ts', '.js'
+            ".ts", ".js"
         ]
     }
 };
