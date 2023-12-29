@@ -4,10 +4,10 @@ module.exports = {
     mode: "production", // "production" | "development" | "none"
 
     // entrypoint
-    entry: path.join(__dirname, "./ts/main.ts"),
+    entry: path.join(__dirname, "src/ts/main.ts"),
 
     output: {
-        path: path.join(__dirname, "dist"),
+        path: path.join(__dirname, "docs/dist"),
         filename: "sim_local_anesthetics.js",
         publicPath: "/dist/"
     },

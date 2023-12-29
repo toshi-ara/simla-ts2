@@ -18,7 +18,7 @@
 
 ## インストールおよび実行方法について
 1. [このページ](https://toshi-ara.github.io/simla-ts/) にアクセスする
-1. [シミュレーターのページへ](https://toshi-ara.github.io/simla-ts/src/index.html)
+1. [シミュレーターのページへ](https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html)
    のリンクを開く
 1. Windows PC（EdgeあるいがChromeで開く）およびAndroidの場合には
   インストールするように通知が表示される
