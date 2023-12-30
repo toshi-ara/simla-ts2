@@ -1,64 +1,77 @@
+# Simulator for local anesthetic agents
+## Summary
+- This program is a computer-based simulator
+   that reproduces the local anesthetic training items
+   used in student training at Matsumoto Dental University.
+- You can install it on your PC or tablet
+   because this is created as a Progressive Web App (PWA).
 
-# 局所麻酔薬シミュレーター
 
-## 概要
-- 松本歯科大学の学生実習で行っていた局所麻酔薬の実習項目を
-  コンピューター上で再現したシミュレーターです
-- プログレッシブウェブアプリ (PWA) として作成しているため
-  PCあるいはタブレットにインストールすることができます
+## How to install and run
+1. Access [this page](https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html).
+1. For Windows PC (opens in Edge or Chrome) and Android,
+    a notification will be displayed to install it.
+    (no need to install).
+    - Once installed, you can use the application
+      even when you are not connected to the Internet.
+    - For iPhone or iPad, select "Add to Home Screen" from the menu.
 
-## インストールおよび実行方法について
-1. [このページ](https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html)
-   にアクセスする
-1. Windows PC（EdgeあるいがChromeで開く）およびAndroidの場合には
-   インストールするように通知が表示される
-   （インストールしなくても大丈夫です）
-    - インストールした場合にはインターネットに接続していない状態でも
-      アプリケーションを使用することができます
-    - iPhoneあるいはiPadの場合にはメニューから"ホーム画面に追加"を選択して下さい
 
-## 実習手順について
-### シミュレーターの元となった動物実験の手順
-1. モルモット背部の毛をシェーバーで刈り取る
-1. 以下の薬物 0.1 ml を皮下注射する。その後、丘疹部の周囲を丸で囲む
-    - Saline: 生理食塩水
-    - Pro: プロカイン塩酸塩 (1%)
-    - Lid: リドカイン塩酸塩 (1%)
-    - Mep: メピバカイン塩酸塩 (1%)
-    - Bup: ブピバカイン塩酸塩 (1%)
-    - Lid + Adr: リドカイン塩酸塩 (1%) + アドレナリン (1/100,000)
-1. 一定時間ごとに丘疹内を刺激針で6回刺激し、皮膚収縮を起こした回数を測定する
-   （この値をスコア値とする）
-    - 5分ごとに刺激を行い、120分まで観測する
-1. スコア値6が3回連続した場合に、その薬物の効果が終了したと判定する
-    - 終了後は刺激を行わなくてもよい
-1. 各薬物のスコア値の合計および作用持続時間を比較する
+## About training procedures
+### Procedures for animal experiments on which the simulator is based
+1. Shave the hair on the back of the guinea pig
+1. Inject 0.1 mL of the following drugs intradermally,
+   and each injection site papule is enclosed in a circle
+   marked by a magic marker.
+    - Saline
+    - Pro: Procaine hydrochloride (1%)
+    - Lid: Lidocaine hydrochloride (1%)
+    - Mep: Mepivacaine hydrochloride (1%)
+    - Bup: Bupivacaine hydrochloride (1%)
+    - Lid + Adr: Lidocaine hydrochloride (1%) with adrenaline (1/100,000)
+1. Stimulate 6 times at each papule with needle,
+    with the number of the skin contractions counted,
+    defining this number as the score (minimum is 0, and maximum is 6).
+    - Stimulate at 5 min interval up to 120 min
+1. When a score of 6 is obtained three times in a row,
+    finish the stimulation and define that time as the duration.
+    - No need to stimulate after completion
+1. Compare the sum of score values and duration of action for each drug.
 
-### シミュレーターの使用方法について
-1. **開始ボタン**を押すと測定を開始します
-1. 円の内部を左クリックすると画面の左下に"反応あり"あるいは"反応なし"と表示されます。
-   "反応あり"の場合には円が一時的に赤色に変化します
-1. スライダーで時間経過の速度（倍）を変更することができます
-    - 実行中・停止中のどちらの場合にも値を変更することが可能です
-1. **一時停止ボタン**を押すと時間の経過が停止し、**再開ボタン**を押すと時間の経過が再開します
-1. **新規実験ボタン**を押すと新しいパラメータ値で始めから実験を行うことができます
-    - 異なる動物を使用して実験を行うことを意味します
-1. **終了ボタン**を押してからプログラムを終了します
-    - ブラウザ内にパラメーターの情報が残っているため、
-      この操作を行って削除して下さい
+### How to use the simulator
+1. Press **Start** button to start measurement
+1. When you click inside the circle,
+    "Response" or "No response" will be displayed
+    at the bottom left of the screen.
+   If there is a response,
+    the circle will temporarily turn red.
+1. You can change the speed (times) of time passing with the slider.
+    - Values can be changed both while running and stopped.
+1. Press the **Pause** button to stop time passing,
+    and press the **Restart** button to resume time passing
+1. You can run the experiment from the beginning with new parameter values
+    by pressing the **New Exp.** button.
+    - This means conducting experiments using different animals.
+1. Press the **Quit** button and then exit the program.
+    - Please perform this operation to delete the parameter information
+      because this remains in the browser,
 
-### このシミュレーターの注意点について
-- このシミュレーターは実際の実習結果をもとにモデル化したものですが、
-  必ずしも動物実験と同じ結果が得られるとは限りません
-    - 薬物のパラメーター値を乱数で設定しているため
-      薬物の作用持続時間が本来の薬物の順序と異なる場合があります
-        - v1.0.0から多変量正規分布に従う乱数を使用するように変更したため、
-          この頻度は低下したと思います
-    - 刺激した際の反応の有無を乱数で決定しているため
-      反応回数が上下を繰り返し、必ずしも経時的に増加するとは限りません
+### Notes on this simulator
+- This simulator is modeled based on actual training results,
+   but it may not necessarily yield the same results as animal experiments.
+    - Because drug parameter values are set with random numbers,
+      the duration of drug action may differ from the original drug order.
+        - I think this frequency has decreased
+          because v1.0.0 has changed to using random numbers
+           that follow a multivariate normal distribution
+    - Because the presence or absence of a response
+      when stimulated is determined by random numbers,
+      the number of responses repeats up and down
+       and does not necessarily increase over time.
 
-## 参考文献
-このシミュレーターで使用したモデル式およびパラメータ値の論文
+
+## Reference
+A paper on the model formula and parameter values used in this simulator.
 
 - Toshiaki Ara and Hiroyuki Kitamura:
   Development of a Predictive Statistical Pharmacological Model
@@ -67,69 +80,77 @@
   Medicines 2023, 10(11), 61
   (https://doi.org/10.3390/medicines10110061)
 
-## 環境構築について（教員用）
-- MIT Licenseで公開しているため商用・非商用に限らず使用・改変可能です
-- 以下の方法のいずれかで実習環境を構築します
-    1. GitHub上に公開したページにアクセスする方法
+
+## How to build the environment (for teachers)
+- Since it is released under the MIT License,
+  it can be used and modified for both commercial and non-commercial purposes.
+- Build the environment using one of the following methods.
+    1. Access the page published on GitHub
         - https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html
-        - 最も簡単ですが、学生がアクセスしやすいページ（教室独自のページなど）に
-          このリンクを貼っておくといいと思います
-    1. 学生のコンピューターにインストールする場合
-        - このページの`Code`ボタンをクリックすると
-          `Download ZIP`と表示されるためクリックします。
-          `simla-ts-main.zip`という名前のファイルが保存されます
-        - ファイルを解凍した後に
-          `docs`フォルダの中身をコンピューターにコピーします
-          （適宜フォルダ名を変更して下さい）
-        - フォルダ内の`sim_local_anesthetics.html`をダブルクリックすると
-          ブラウザが起動してシミュレーターを使用できます
-    1. 自前のwebサーバに設置する場合（**詳しい方に相談して下さい**）
-        - 上記の`docs`フォルダの中身をwebサーバの適切な場所に設置します
-          （適宜フォルダ名を変更して下さい）
-        - `sim_local_anesthetics.html`にアクセスするとシミュレーターを使用できます
+        - This is the easiest,
+          and I think it would be a good idea to post this link
+          on a page that is easy for students to access
+          (such as a classroom-specific page).
+    1. Installing on student computers
+        - When you click the `Code` button on this page,
+          `Download ZIP` will be displayed,
+          so click it. A file named `simla-ts-main.zip` will be saved.
+        - After unzipping the file,
+           copy the contents of the `docs` folder to your computer
+           (Please change the folder name as appropriate).
+        - Double-click `sim_local_anesthetics.html` in the folder
+           to start the browser and use the simulator.
+    1. Install on your own web server (**Please consult an expert**)
+        - Place the contents of the above `docs` folder
+           in the appropriate location on the web server
+           (Please change the folder name as appropriate).
+        - You can use the simulator by visiting `sim_local_anesthetics.html`
 
-## ソースコードを変更する場合（開発者限定）
-### ライセンス表示について
-- 改変する場合には`LICENSE`ファイルの
-  `Copyright (c) 2022 ARA Toshiaki`以降に著作権者を追加した上で、
-  その`LICENSE`ファイルをソースコードに含めて下さい
 
-### ビルド方法
-- npm（JavaScriptのパッケージ管理システム）が必要です
-- npmをインストールした状態で以下のコマンドを実行します
+## When changing the source code (for developers only)
+### How to display license
+- If you want to modify program, please edit the `LICENSE` file.
+  Please add the copyright holder after `Copyright (c) 2022 ARA Toshiaki`
+   and include this `LICENSE` file in the source code.
+
+### How to build the code
+- Requires npm (JavaScript package management system)
+- Run the following command with npm installed
 
 ```bash
 git clone https://github.com/toshi-ara/simla-ts.git
-# git clone git@github.com:toshi-ara/simla-ts.git  # sshを使用する場合
+# git clone git@github.com:toshi-ara/simla-ts.git  # when ssh is used
 cd simla-ts
 
 npm install
 npm run build
 ```
 
-### 別リポジトリのコードを使用
-GitHub上の[別リポジトリのコード](https://github.com/toshi-ara/simla)
-を使用することも可能です
+### Use code from another repository
+It is also possible to use
+[code from another repository](https://github.com/toshi-ara/simla) on GitHub.
+- There is no need for npm in this case (works only in the browser).
 
-- この場合にはnpmの必要はありません（ブラウザのみで動作します）
 
-
-## 変更履歴
+## ChangeLog
 ### (2023-12-30)
-- README.mdファイル（このページ）の内容を更新
-    - 環境構築および参考文献の項目を追加
+- update contents in README.md (this page)
+    - added environment construction and reference items
+- change to English (original contents in Japanese are moved to README-ja.md)
 
 ### v1.0.1 (2023-12-30)
-- ソースコードのディレクトリ配置を変更
-    - docs以下を公開するように変更
-- それに伴い公開URLを変更
+- change directory location of source code
+    - changed to publish below docs
+- change the public URL accordingly
     - https://toshi-ara.github.io/simla-ts/sim_local_anesthetics.html
 
 ### v1.0.0 (2023-12-29)
-- シミュレーション時における薬物のパラメータ値の設定方法を変更
-    - 多変量正規分布に従う乱数を使用（各薬物間の相関係数0.8）
+- change the method to set drug parameter values in simulation
+    - use the random numbers that follow a multivariate normal distribution
+      (the correlation coefficient between each drug is 0.8)
 
-## このプログラムについて
-- 作成者：松本歯科大学・薬理学講座 荒　敏昭
-- 作成年：2022
-- ライセンス：MITライセンス
+
+## About this program
+- Author: Matsumoto Dental University, Department of Pharmacology, Toshiaki Ara
+- Year:2022
+- License: MIT License
