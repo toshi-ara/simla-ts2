@@ -133,6 +133,11 @@ It is also possible to use
 
 
 ## ChangeLog
+### v1.1.0 (2024-1-4)
+- use "multivariate-normal" package to generate random numbers
+  that follow a multivariate normal distribution
+    - drop R script
+
 ### (2023-12-30)
 - update contents in README.md (this page)
     - added environment construction and reference items
@@ -148,7 +153,6 @@ It is also possible to use
 - change the method to set drug parameter values in simulation
     - use the random numbers that follow a multivariate normal distribution
       (the correlation coefficient between each drug is 0.8)
-
 
 ## About this program
 - Author: Matsumoto Dental University, Department of Pharmacology, Toshiaki Ara
