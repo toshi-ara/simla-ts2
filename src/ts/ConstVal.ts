@@ -5,6 +5,8 @@ export const ADR = 0.7;
 export const MU0_adj = 0;
 export const D_MU0 = [0, 4];
 
+export const rho = 0.8;
+
 // image
 export const CENTERS = [[218, 100], [289, 100], [360, 100],
                         [218, 150], [289, 150], [360, 150]];

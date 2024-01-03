@@ -1,6 +1,6 @@
 import * as ConstVal from "./ConstVal";
-import { randMultiNorm } from "./RandMultiNorm";
 import { random_norm } from "./MyStat";
+import MultivariateNormal from "multivariate-normal";
 
 export default class Parameter {
     private param;
@@ -26,26 +26,34 @@ export default class Parameter {
 
         // values of saline are 0
         // set parameters for Pro, Lid, Mep, Bup
-        //   with random generator following to multinormal distribution
+        //   with random generator following to multivariate normal distribution
+        //   using "multivariate-normal" package
+        const meanVector = [0, 0, 0, 0];
+        const rho = ConstVal.rho;
+        let covarianceMatrix = [
+            [ 1.0, rho, rho, rho ],
+            [ rho, 1.0, rho, rho ],
+            [ rho, rho, 1.0, rho ],
+            [ rho, rho, rho, 1.0 ],
+        ];
 
-        // get pre-calculated values
-        const n_rand= randMultiNorm.length;
-        const rand1 = randMultiNorm[Math.floor(Math.random() * n_rand) + 1];
-        const rand2 = randMultiNorm[Math.floor(Math.random() * n_rand) + 1];
+        const distribution = MultivariateNormal(meanVector, covarianceMatrix);
+        const rand1 = (distribution.sample());
+        const rand2 = (distribution.sample());
 
         const n = 6;
         for (let i = 1; i < n - 1; i++) {
-            this.param[i][0] = ConstVal.MU0[i-1][0] + d +
-                               ConstVal.MU0[i-1][1] * rand1[i];
+            this.param[i][0] = ConstVal.MU0[i - 1][0] + d +
+                               ConstVal.MU0[i - 1][1] * rand1[i - 1];
             this.param[i][1] = Math.exp(
-                ConstVal.LOG_SIGMA0[i-1][0] +
-                ConstVal.LOG_SIGMA0[i-1][1] * rand2[i]
+                ConstVal.LOG_SIGMA0[i - 1][0] +
+                ConstVal.LOG_SIGMA0[i - 1][1] * rand2[i - 1]
             );
         }
         // Lid + Adr
-        this.param[n-1][0] = this.param[2][0]
-        this.param[n-1][1] = this.param[2][1]
-        this.param[n-1][2] = ConstVal.ADR
+        this.param[n - 1][0] = this.param[2][0]
+        this.param[n - 1][1] = this.param[2][1]
+        this.param[n - 1][2] = ConstVal.ADR
 
         this.setStorage();
     }
