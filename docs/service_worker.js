@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'cache-simla-v1.0.1';
+const CACHE_NAME = 'cache-simla-v1.1.0';
 const urlsToCache = [
     'sim_local_anesthetics.html',
     './dist/sim_local_anesthetics.js'
