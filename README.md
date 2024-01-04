@@ -133,6 +133,9 @@ It is also possible to use
 
 
 ## ChangeLog
+### v1.1.1 (2024-1-4)
+- Fix failure to start after installing as a PWA application
+
 ### v1.1.0 (2024-1-4)
 - use "multivariate-normal" package to generate random numbers
   that follow a multivariate normal distribution
