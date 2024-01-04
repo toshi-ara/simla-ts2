@@ -115,12 +115,14 @@ export default class SimLocalAnesthesia {
                             ConstVal.Rrespond, ConstVal.RrespondCenter, "red");
             this.elem_response.textContent = Labels.with_response[this.lang];
             this.elem_response.style.color = "red";
+            this.elem_timer.style.color = "red";
 
             setTimeout(() => {
                 Draw.fillRect(context, ConstVal.CENTERS[site], ConstVal.Rrespond);
                 Draw.drawCircle(context, ConstVal.CENTERS[site],
                                 ConstVal.Rnormal, ConstVal.RnormalCenter, "black");
                 this.elem_response.textContent = "";
+                this.elem_timer.style.color = "black";
             }, 300);
         } else {
             // effects without response
