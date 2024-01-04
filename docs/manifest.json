@@ -2,7 +2,7 @@
     "short_name": "SimLA",
     "name": "Local Anesthesia Simulation",
     "display": "standalone",
-    "start_url": "index.html",
+    "start_url": "sim_local_anesthetics.html",
     "icons": [
         {
             "src": "images/icon-512.png",
