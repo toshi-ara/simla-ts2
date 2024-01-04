@@ -133,6 +133,9 @@ It is also possible to use
 
 
 ## ChangeLog
+### v1.1.2 (2024-1-4)
+- Change the timer text color to red when there is a response
+
 ### v1.1.1 (2024-1-4)
 - Fix failure to start after installing as a PWA application
 
