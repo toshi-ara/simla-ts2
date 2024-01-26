@@ -28,26 +28,18 @@ export default class Parameter {
         // set parameters for Pro, Lid, Mep, Bup
         //   with random generator following to multivariate normal distribution
         //   using "multivariate-normal" package
-        const meanVector = [0, 0, 0, 0];
-        const rho = ConstVal.rho;
-        let covarianceMatrix = [
-            [ 1.0, rho, rho, rho ],
-            [ rho, 1.0, rho, rho ],
-            [ rho, rho, 1.0, rho ],
-            [ rho, rho, rho, 1.0 ],
-        ];
-
-        const distribution = MultivariateNormal(meanVector, covarianceMatrix);
-        const rand1 = (distribution.sample());
-        const rand2 = (distribution.sample());
+        const meanVector = [0, 0, 0, 0, 0, 0, 0, 0];
+        const distribution = MultivariateNormal(meanVector,
+                                                ConstVal.covarianceMatrix);
+        const rand = distribution.sample();
 
         const n = 6;
         for (let i = 1; i < n - 1; i++) {
             this.param[i][0] = ConstVal.MU0[i - 1][0] + d +
-                               ConstVal.MU0[i - 1][1] * rand1[i - 1];
+                               ConstVal.MU0[i - 1][1] * rand[i - 1];
             this.param[i][1] = Math.exp(
                 ConstVal.LOG_SIGMA0[i - 1][0] +
-                ConstVal.LOG_SIGMA0[i - 1][1] * rand2[i - 1]
+                ConstVal.LOG_SIGMA0[i - 1][1] * rand[i + 3]
             );
         }
         // Lid + Adr
