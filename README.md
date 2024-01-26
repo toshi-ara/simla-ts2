@@ -133,6 +133,9 @@ It is also possible to use
 
 
 ## ChangeLog
+### v1.2.0 (2024-1-26)
+- Update the correlation coefficients among drug parameter values
+
 ### v1.1.2 (2024-1-4)
 - Change the timer text color to red when there is a response
 
