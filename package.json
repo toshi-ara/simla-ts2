@@ -11,12 +11,12 @@
     "license": "MIT license",
     "devDependencies": {
         "@types/multivariate-normal": "^0.1.4",
-        "css-loader": "^6.8.1",
+        "css-loader": "^6.9.1",
         "multivariate-normal": "^0.1.2",
-        "npm-check-updates": "^16.14.12",
-        "style-loader": "^3.3.3",
+        "npm-check-updates": "^16.14.13",
+        "style-loader": "^3.3.4",
         "ts-loader": "^9.5.1",
-        "webpack": "^5.89.0",
+        "webpack": "^5.90.0",
         "webpack-cli": "^5.1.4"
     }
 }
