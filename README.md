@@ -133,6 +133,9 @@ It is also possible to use
 
 
 ## ChangeLog
+### v1.2.1 (2024-7-15)
+- Disable pinch-in in canvas area
+
 ### v1.2.0 (2024-1-26)
 - Update the correlation coefficients among drug parameter values
 
