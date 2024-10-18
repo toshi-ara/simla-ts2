@@ -21,19 +21,20 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
+        cache: 'npm'
 
     - name: Build dist/*.js
       run: |
         npm ci
         npm run build
 
-    - name: Set up Git user
-      run: |
-        git config user.name github-actions
-        git config user.email github-actions@github.com
+    # - name: Set up Git user
+    #   run: |
+    #     git config user.name github-actions
+    #     git config user.email github-actions@github.com
 
-    - name: Push
-      run: |
-        git commit -m "update *.js"
-        git push
+    # - name: Push
+    #   run: |
+    #     git commit -m "update *.js"
+    #     git push
 
