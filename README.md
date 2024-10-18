@@ -133,6 +133,9 @@ It is also possible to use
 
 
 ## ChangeLog
+### (2024-10-18)
+- Update
+
 ### v1.2.1 (2024-7-15)
 - Disable pinch-in in canvas area
 
