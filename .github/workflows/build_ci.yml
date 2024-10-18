@@ -27,3 +27,8 @@ jobs:
         npm ci
         npm run build
 
+    - name: Push
+      run: |
+        git commit -m "update *.js"
+        git push
+
