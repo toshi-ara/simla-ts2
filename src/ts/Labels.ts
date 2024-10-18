@@ -1,5 +1,5 @@
 export default class Labels {
-    static start = ["かいし", "Start"];
+    static start = ["開始", "Start"];
     static restart = ["再開", "Restart"];
     static pause = ["一時停止", "Pause"];
     static newexp = ["新規実験", "New Exp."];
